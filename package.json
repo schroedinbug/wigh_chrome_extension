@@ -1,0 +1,27 @@
+{
+  "name": "chrome_extension",
+  "version": "1.0.0",
+  "description": "Second Life Chrome Extension",
+  "main": "main.js",
+  "scripts": {
+    "lint": "eslint src/**/*.js; exit 0",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schroedinbug/wigh_chrome_extension.git"
+  },
+  "keywords": [
+    "chrome"
+  ],
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/schroedinbug/wigh_chrome_extension/issues"
+  },
+  "homepage": "https://github.com/schroedinbug/wigh_chrome_extension#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1"
+  }
+}
