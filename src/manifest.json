@@ -14,5 +14,11 @@
     "activeTab",
     "https://jira.secondlife.com/",
     "storage"
-  ]
+  ],
+  "icons": {
+      "16": "images/favicon.png",
+      "32": "images/favicon.png",
+      "48": "images/favicon.png",
+      "128": "images/favicon.png"
+  }
 }
