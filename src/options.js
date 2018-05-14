@@ -4,9 +4,11 @@
 function saveOptions() {
   let prj = document.getElementById('project').value;
   let usr = document.getElementById('user').value;
+  let days = document.getElementById('daysPast').value;
   chrome.storage.sync.set({
     project: prj,
     user: usr,
+    daysPast: days,
   }, function() {
     // Update status to let user know options were saved.
     let status = document.getElementById('status');
@@ -27,9 +29,11 @@ function restoreOptions() {
   chrome.storage.sync.get({
     project: 'Sunshine',
     user: 'nyx.linden',
+    daysPast: 0,
   }, function(items) {
     document.getElementById('project').value = items.project;
     document.getElementById('user').value = items.user;
+    document.getElementById('daysPast').value = items.daysPast;
   });
 
   document.getElementById('save').addEventListener('click', saveOptions);

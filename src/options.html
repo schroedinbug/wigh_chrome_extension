@@ -22,10 +22,22 @@
   <div class="container">
     <div class="row">
       <div class="one-half column" style="margin-top: 20%">
-        <h4>JIRA Search Options</h4>
+        <h4>JIRA Default Search Options</h4>
           <p>
-            <input type="text" placeholder="enter a project" id="project" />
-            <input type="text" placeholder="enter a user" id="user" />
+            <table>
+              <tr>
+                <td>Project:</td>
+                <td><input type="text" placeholder="enter a project" id="project" /></td>
+              </tr>
+              <tr>
+                <td>User:</td>
+                <td><input type="text" placeholder="enter a user" id="user" /></td>
+              </tr>
+              <tr>
+                  <td>Days past:</td>
+                  <td><input type="number" id="daysPast" min="0" max="20" /></td>
+              </tr>
+            </table>
             <button id="save">save</button>
           </p>
           <p>
