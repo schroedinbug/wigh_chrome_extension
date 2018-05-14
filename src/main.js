@@ -84,14 +84,52 @@ function buildJQL(callback) {
   fullCallbackUrl += `project=${project}+and+status=${status}+and+status+changed+to+${status}+before+-${inStatusFor}d&fields=id,status,key,assignee,summary&maxresults=100`;
   callback(fullCallbackUrl);
 }
+
+/**
+ * Process a JSON result and generate HTML to display the results.
+ * @param {string} response - A JSON response from a JIRA query.
+ */
 function createHTMLElementResult(response) {
 //
 // Create HTML output to display the search results.
 // results.json in the "json_results" folder contains a sample of the API response
 // hint: you may run the application as well if you fix the bug.
 //
+  if (!response) {
+    return '<p>There was a problem with the query response.</p>';
+  }
 
-  return '<p>There may be results, but you must read the response and display them.</p>';
+  let issues = response.issues;
+
+  if (!Array.isArray(response.issues)) {
+    return '<p>There are no results.</p>';
+  }
+
+  let result = `There are ${issues.length} issues. <ul>`;
+
+  for (let i = 0; i < issues.length; i++) {
+    let issue = issues[i];
+
+    // Ticket fields.
+    let ticketID = issue.key;
+    let ticketURL = `https://jira.secondlife.com/browse/${ticketID}`;
+    let summary = issue.fields.summary || "";
+    let ticketString = `${ticketID} - ${summary}`;
+
+    result += `<li><a href=${ticketURL}>${ticketString}</a>`;
+
+    // Assignee fields.
+    let assignee = issue.fields.assignee;
+    if (assignee) {
+      let profileURL = `https://jira.secondlife.com/secure/ViewProfile.jspa?name=${assignee.name}`;
+      result += ` assigned to <a href=${profileURL}>${assignee.displayName}</a>`;
+    }
+
+    result += '</li>';
+  }
+
+  result += '</ul>';
+  return result;
 }
 
 // utility
