@@ -69,6 +69,12 @@ function loadOptions() {
     document.getElementById('user').value = items.user;
   });
 }
+
+/**
+ * Build JIRA query to find tickets for a project.
+ * @param {function(string)} callback - Called to process query string. Query
+ *   string is passed to the callback.
+ */
 function buildJQL(callback) {
   let callbackBase = 'https://jira.secondlife.com/rest/api/2/search?jql=';
   let project = document.getElementById('project').value;
