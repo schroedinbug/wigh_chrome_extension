@@ -64,9 +64,11 @@ function loadOptions() {
   chrome.storage.sync.get({
     project: 'Sunshine',
     user: 'nyx.linden',
+    daysPast: 0,
   }, function(items) {
     document.getElementById('project').value = items.project;
     document.getElementById('user').value = items.user;
+    document.getElementById('daysPast').value = items.daysPast;
   });
 }
 
